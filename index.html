@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midwest Pit Stop - Auto Repair & Service | Midwest City, OK</title>
+    <meta name="description" content="Professional auto repair and service in Midwest City, OK. Quality service you can trust.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-black: #1a1a1a;
+            --primary-yellow: #FFD700;
+            --accent-yellow: #FFC700;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --text-gray: #333333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-gray);
+            background-color: var(--white);
+        }
+
+        /* Top Bar with Phone */
+        .top-bar {
+            background-color: var(--primary-black);
+            color: var(--white);
+            padding: 12px 0;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .top-bar a {
+            color: var(--primary-yellow);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .top-bar a:hover {
+            color: var(--accent-yellow);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-black) 0%, #2a2a2a 100%);
+            color: var(--white);
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .highlight {
+            color: var(--primary-yellow);
+        }
+
+        header p {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+
+        .address {
+            font-size: 1.1em;
+            margin-top: 15px;
+            opacity: 0.95;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 60px 20px;
+        }
+
+        section h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            color: var(--primary-black);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-yellow);
+            border-radius: 2px;
+        }
+
+        /* Hours Section */
+        .hours-section {
+            background-color: var(--light-gray);
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hours-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .hours-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .day {
+            font-weight: 600;
+            color: var(--primary-black);
+            font-size: 1.1em;
+        }
+
+        .time {
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        /* Map Section */
+        .map-section {
+            background-color: var(--white);
+        }
+
+        .map-container {
+            max-width: 100%;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            background-color: var(--light-gray);
+        }
+
+        .reviews-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: var(--white);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .review-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+            font-size: 1.1em;
+            color: var(--primary-black);
+        }
+
+        .stars {
+            color: var(--primary-yellow);
+            font-size: 1.2em;
+            letter-spacing: 2px;
+        }
+
+        .review-body {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        .show-more-btn {
+            display: block;
+            margin: 30px auto 0;
+            padding: 15px 40px;
+            background: var(--primary-yellow);
+            color: var(--primary-black);
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .show-more-btn:hover {
+            background: var(--accent-yellow);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, var(--primary-black) 0%, #2a2a2a 100%);
+            color: var(--white);
+        }
+
+        .contact-section h2 {
+            color: var(--white);
+        }
+
+        .contact-section h2::after {
+            background: var(--primary-yellow);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-yellow);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            font-size: 1em;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--primary-black);
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-yellow);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary-yellow);
+            color: var(--primary-black);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: var(--accent-yellow);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Square Payment Section */
+        .payment-section {
+            background-color: var(--white);
+            padding: 60px 20px;
+        }
+
+        .payment-section h2 {
+            color: var(--primary-black);
+        }
+
+        #payment-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        #card-container {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: var(--light-gray);
+            border-radius: 8px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-black);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        footer a {
+            color: var(--primary-yellow);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--accent-yellow);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            section h2 {
+                font-size: 2em;
+            }
+
+            .hours-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .map-container iframe {
+                height: 300px;
+            }
+
+            .contact-form {
+                padding: 25px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .review-card {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar with Phone -->
+    <div class="top-bar">
+        📞 Call Us Now: <a href="tel:+14059312027">+1 (405) 931-2027</a>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <h1>Midwest <span class="highlight">Pit Stop</span></h1>
+        <p>Your Trusted Auto Service Center</p>
+        <div class="address">
+            📍 422 N Air Depot Blvd, Midwest City, OK 73110
+        </div>
+    </header>
+
+    <!-- Hours Section -->
+    <section class="hours-section">
+        <div class="container">
+            <h2>Business Hours</h2>
+            <div class="hours-grid">
+                <div class="hours-card">
+                    <span class="day">Monday</span>
+                    <span class="time">8 AM – 6 PM</span>
+                </div>
+                <div class="hours-card">
+                    <span class="day">Tuesday</span>
+                    <span class="time">8 AM – 6 PM</span>
+                </div>
+                <div class="hours-card">
+                    <span class="day">Wednesday</span>
+                    <span class="time">8 AM – 6 PM</span>
+                </div>
+                <div class="hours-card">
+                    <span class="day">Thursday</span>
+                    <span class="time">8 AM – 6 PM</span>
+                </div>
+                <div class="hours-card">
+                    <span class="day">Friday</span>
+                    <span class="time">8 AM – 6 PM</span>
+                </div>
+                <div class="hours-card">
+                    <span class="day">Saturday</span>
+                    <span class="time">9 AM – 5 PM</span>
+                </div>
+                <div class="hours-card">
+                    <span class="day">Sunday</span>
+                    <span class="time">9 AM – 2 PM</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <h2>Our Shop</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="midwestpitstop1.png" alt="Midwest Pit Stop - Image 1" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="midwestpitstop2.png" alt="Midwest Pit Stop - Image 2" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="midwestpitstop3.png" alt="Midwest Pit Stop - Image 3" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="midwestpitstop4.png" alt="Midwest Pit Stop - Image 4" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="midwestpitstop5.png" alt="Midwest Pit Stop - Image 5" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="midwestpitstop6.png" alt="Midwest Pit Stop - Image 6" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2>Visit Us</h2>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51984.84842897105!2d-97.46525508903221!3d35.47823181980221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87b23da7ff9cf155%3A0x515c812846fa2e9c!2sMidwest%20Pit%20Stop!5e0!3m2!1sen!2sus!4v1759181431750!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+        <div class="container">
+            <h2>Customer Reviews</h2>
+            <div class="reviews-container" id="reviewsContainer"></div>
+            <button class="show-more-btn hidden" id="showMoreBtn"></button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Square Payment Section -->
+    <section class="payment-section">
+        <div class="container">
+            <h2>Pay Online</h2>
+            <div id="payment-form">
+                <div id="card-container"></div>
+                <button class="submit-btn" id="card-button" type="button">Pay Now</button>
+            </div>
+            <div id="payment-status"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Midwest Pit Stop. All rights reserved.</p>
+        <p>📍 422 N Air Depot Blvd, Midwest City, OK 73110</p>
+        <p>📞 <a href="tel:+14059312027">+1 (405) 931-2027</a></p>
+    </footer>
+
+    <!-- Square Payment Script -->
+    <script src="https://sandbox.web.squarecdn.com/v1/square.js"></script>
+    
+    <script>
+        // ==================== REVIEWS DATA ====================
+        // ADD YOUR REVIEWS HERE - Replace this array with your actual reviews
+        const reviews = [
+            { name: "Customer 1", rating: 5, body: "Great service and friendly staff!" },
+            { name: "Customer 2", rating: 5, body: "Fast and reliable. Highly recommend!" },
+            { name: "Customer 3", rating: 5, body: "" },
+            { name: "Customer 4", rating: 5, body: "Excellent work at fair prices." },
+            { name: "Customer 5", rating: 5, body: "" },
+            { name: "Customer 6", rating: 5, body: "Best auto shop in Midwest City!" },
+            { name: "Customer 7", rating: 5, body: "" },
+            { name: "Customer 8", rating: 5, body: "Professional and trustworthy." },
+            { name: "Customer 9", rating: 5, body: "" },
+            { name: "Customer 10", rating: 5, body: "" },
+            { name: "Customer 11", rating: 5, body: "Always take care of my car perfectly." },
+            { name: "Customer 12", rating: 5, body: "" },
+            { name: "Customer 13", rating: 5, body: "" }
+        ];
+
+        // ==================== REVIEWS RENDERING ====================
+        const reviewsPerPage = 6;
+        let currentPage = 0;
+
+        function renderReviews() {
+            const container = document.getElementById('reviewsContainer');
+            const showMoreBtn = document.getElementById('showMoreBtn');
+            
+            const startIndex = currentPage * reviewsPerPage;
+            const endIndex = startIndex + reviewsPerPage;
+            const reviewsToShow = reviews.slice(startIndex, endIndex);
+
+            reviewsToShow.forEach(review => {
+                const reviewCard = document.createElement('div');
+                reviewCard.className = 'review-card';
+                
+                const stars = '★'.repeat(review.rating);
+                
+                reviewCard.innerHTML = `
+                    <div class="review-header">
+                        <span class="reviewer-name">${review.name}</span>
+                        <span class="stars">${stars}</span>
+                    </div>
+                    ${review.body ? `<div class="review-body">${review.body}</div>` : ''}
+                `;
+                
+                container.appendChild(reviewCard);
+            });
+
+            currentPage++;
+            const remainingReviews = reviews.length - (currentPage * reviewsPerPage);
+            
+            if (remainingReviews > 0) {
+                showMoreBtn.textContent = `Show ${Math.min(remainingReviews, reviewsPerPage)} More (Total ${remainingReviews})`;
+                showMoreBtn.classList.remove('hidden');
+            } else {
+                showMoreBtn.classList.add('hidden');
+            }
+        }
+
+        document.getElementById('showMoreBtn').addEventListener('click', renderReviews);
+        renderReviews();
+
+        // ==================== CONTACT FORM ====================
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                message: document.getElementById('message').value
+            };
+
+            // Here you would typically send the data to your server
+            console.log('Form submitted:', formData);
+            
+            alert('Thank you for contacting us! We will get back to you soon.');
+            this.reset();
+        });
+
+        // ==================== SQUARE PAYMENT INTEGRATION ====================
+        // IMPORTANT: Replace 'YOUR_LOCATION_ID' with your actual Square Location ID
+        // Also replace 'sandbox' with 'production' when going live
+        
+        const SQUARE_LOCATION_ID = 'YOUR_LOCATION_ID'; // <-- REPLACE THIS
+        
+        async function initializeSquarePayment() {
+            if (!window.Square) {
+                console.error('Square.js failed to load');
+                return;
+            }
+
+            try {
+                const payments = window.Square.payments('sandbox-sq0idb-YOUR_APPLICATION_ID', SQUARE_LOCATION_ID); // Replace with your app ID
+                const card = await payments.card();
+                await card.attach('#card-container');
+
+                document.getElementById('card-button').addEventListener('click', async function(event) {
+                    event.preventDefault();
+                    
+                    const statusContainer = document.getElementById('payment-status');
+                    
+                    try {
+                        const result = await card.tokenize();
+                        if (result.status === 'OK') {
+                            // Here you would send result.token to your server to process the payment
+                            console.log('Payment token:', result.token);
+                            statusContainer.innerHTML = '<p style="color: var(--primary-yellow);">Payment processing... (Token generated)</p>';
+                            
+                            // You need to send this token to your backend server to complete the payment
+                            // Example: await fetch('/process-payment', { method: 'POST', body: JSON.stringify({ token: result.token }) });
+                        } else {
+                            statusContainer.innerHTML = '<p style="color: #ff6b6b;">Payment failed. Please try again.</p>';
+                        }
+                    } catch (e) {
+                        console.error('Payment error:', e);
+                        statusContainer.innerHTML = '<p style="color: #ff6b6b;">Error processing payment.</p>';
+                    }
+                });
+            } catch (e) {
+                console.error('Square payment initialization error:', e);
+            }
+        }
+
+        // Initialize Square payment when page loads
+        if (SQUARE_LOCATION_ID !== 'YOUR_LOCATION_ID') {
+            initializeSquarePayment();
+        } else {
+            document.getElementById('payment-form').innerHTML = '<p style="text-align: center; color: var(--text-gray);">Payment integration requires Square Location ID configuration.</p>';
+        }
+    </script>
+</body>
+</html>
